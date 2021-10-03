@@ -12,11 +12,11 @@ function getRandomIntInclusive(min, max) {
 getRandomIntInclusive(0, 10);
 
 
-function getCommentLength (comment) {
-  if (comment.length > 140) {
+function getCommentLength (comment, maxLength) {
+  if (comment.length > maxLength) {
     return false;
   }
   return true;
 }
 
-getCommentLength('comment');
+getCommentLength('comment', 140);
