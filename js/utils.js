@@ -9,7 +9,6 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-getRandomIntInclusive(0, 10);
 
 
 function getCommentLength (comment, maxLength) {
@@ -18,7 +17,5 @@ function getCommentLength (comment, maxLength) {
   }
   return true;
 }
-
-getCommentLength('comment', 140);
 
 export {getRandomIntInclusive, getCommentLength};

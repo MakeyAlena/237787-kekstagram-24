@@ -33,7 +33,9 @@ const NAMES = [
 const PHOTO_COUNT = 25;
 
 function getCommets(count) {
-  return Array.from({length:count}).map(() => COMMENTS[getRandomIntInclusive(0,5)]);
+  return Array.from({length:count}).map(() => ({
+    avatar: `img/avatar-${getRandomIntInclusive(1,6)}.svg`,description:COMMENTS[getRandomIntInclusive(0,5)],
+  }));
 }
 
 const createPhotos = (index) => ({
@@ -50,5 +52,4 @@ const createPhotos = (index) => ({
 export function generatePhotos() {
   return Array.from({length:PHOTO_COUNT}).map((skip, index) => createPhotos(index+1));
 }
-generatePhotos();
 
