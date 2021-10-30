@@ -35,8 +35,8 @@ function hideModal() {
   photoDetails.classList.add('hidden');
 }
 
-body.addEventListener('keydown', (e)  => {
-  if(e.key === 'Escape') {
+body.addEventListener('keydown', (evt)  => {
+  if(evt.key === 'Escape') {
     hideModal();
   }
 });
