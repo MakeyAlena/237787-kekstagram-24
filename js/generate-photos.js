@@ -32,18 +32,20 @@ const NAMES = [
 
 const PHOTO_COUNT = 25;
 
+
 function getCommets(count) {
   return Array.from({length:count}).map(() => ({
     avatar: `img/avatar-${getRandomIntInclusive(1,6)}.svg`,description:COMMENTS[getRandomIntInclusive(0,5)],
   }));
 }
 
+
 const createPhotos = (index) => ({
   id: index,
   url : `photos/${index}.jpg`,
   description: DESCRIPTIONS[getRandomIntInclusive(0,5)],
   like: getRandomIntInclusive(15, 200),
-  comment: getCommets(getRandomIntInclusive(1,3)),
+  comment: getCommets(getRandomIntInclusive(0,15)),
   avatar: `img/avatar-${getRandomIntInclusive(1,6)}.svg`,
   name: NAMES[getRandomIntInclusive(0,7)],
 });
