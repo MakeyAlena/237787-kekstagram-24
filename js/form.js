@@ -5,7 +5,7 @@ const uploadFormFile = uploadForm.querySelector('.img-upload__control');
 const uploadFormCancel = uploadForm.querySelector('#upload-cancel');
 
 
-function OpenForm() {
+function openForm() {
   uploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
 }
@@ -22,7 +22,7 @@ body.addEventListener('keydown', (evt)  => {
 });
 
 uploadFormFile.addEventListener('click', () => {
-  OpenForm();
+  openForm();
 });
 
 uploadFormCancel.addEventListener('click', () => {
