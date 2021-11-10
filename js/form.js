@@ -1,3 +1,4 @@
+import {resetEffect} from './effects.js';
 const uploadForm = document.querySelector('#upload-select-image');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const body = document.body;
@@ -6,6 +7,7 @@ const uploadFormCancel = uploadForm.querySelector('#upload-cancel');
 
 
 function openForm() {
+  resetEffect();
   uploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
 }
