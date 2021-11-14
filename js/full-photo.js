@@ -10,10 +10,10 @@ let currentComment = [];
 function appendComments(comments, start, step) {
   const listNotesFragment = document.createDocumentFragment();
   const end = step + start;
-  comments.slice(start, end).forEach(({avatar, description}) => {
+  comments.slice(start, end).forEach(({avatar, message}) => {
     const commentElement = commentTemplate.cloneNode(true);
     commentElement.querySelector('.social__picture').src = avatar;
-    commentElement.querySelector('.social__text').textContent = description;
+    commentElement.querySelector('.social__text').textContent = message;
     listNotesFragment.appendChild(commentElement);
   });
   commentsBlock.appendChild(listNotesFragment);
@@ -28,17 +28,22 @@ function appendComments(comments, start, step) {
   currentCommentCount = end;
 }
 
-export function showModal({avatar, url, like, comment, description}) {
+export function showModal({avatar, url, likes, comments, description}) {
   currentCommentCount = 0;
-  currentComment = comment;
+  currentComment = comments;
   body.classList.add('modal-open');
   photoDetails.classList.remove('hidden');
   photoDetails.querySelector('.big-picture__img img').src = url;
-  photoDetails.querySelector('.social__header img').src = avatar;
-  photoDetails.querySelector('.likes-count').textContent = like;
+  if(avatar) {
+    photoDetails.querySelector('.social__header img').src = avatar;
+  } else {
+    photoDetails.querySelector('.social__header img').classList.add('hidden');
+  }
+
+  photoDetails.querySelector('.likes-count').textContent = likes;
   photoDetails.querySelector('.social__caption').textContent = description;
   commentsBlock.innerHTML = '';
-  appendComments(comment, currentCommentCount, 5);
+  appendComments(comments, currentCommentCount, 5);
 }
 
 
