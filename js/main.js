@@ -3,6 +3,7 @@ import './full-photo.js';
 import './form-validation.js';
 import './zoom.js';
 import './effects.js';
+import './user-photo.js';
 import {showFilters} from './filter.js';
 import {hideForm} from './form.js';
 import {setUserFormSubmit} from './form.js';
