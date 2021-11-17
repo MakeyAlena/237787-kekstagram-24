@@ -9,6 +9,8 @@ const SendFormSuccess = document.querySelector('.success');
 const closeSuccessFormButton = document.querySelector('.success__button');
 const SendFormFail = document.querySelector('.error');
 const closeErrorFormButton = document.querySelector('.error__button');
+const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+const preview = document.querySelector('.img-upload__preview img');
 
 function openForm() {
   resetEffect();
@@ -36,6 +38,14 @@ body.addEventListener('keydown', (evt)  => {
 
 uploadFormFile.addEventListener('change', () => {
   openForm();
+  const file = uploadFormFile.files[0];
+  const fileName = file.name.toLowerCase();
+
+  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+
+  if (matches) {
+    preview.src = URL.createObjectURL(file);
+  }
 });
 
 uploadFormCancel.addEventListener('click', () => {

@@ -1,5 +1,6 @@
 const uploadComment = document.querySelector('.text__description');
 const MAX_COMMENT_LENGTH = 140;
+const MAX_COUNT_LENGTH = 5;
 
 
 uploadComment.addEventListener('input', () => {
@@ -14,8 +15,8 @@ uploadComment.addEventListener('input', () => {
 
 
 const hashtagsInput = document.querySelector('.text__hashtags');
-const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
-const MAX_COUNT_LENGTH = 5;
+const regular = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
+
 
 hashtagsInput.addEventListener('input', () => {
   const hashtagsStrings = hashtagsInput.value;
@@ -34,7 +35,7 @@ hashtagsInput.addEventListener('input', () => {
     if(!hashtag.startsWith('#') && hashtag.length > 0) {
       return hashtagsInput.setCustomValidity('хэш-тег начинается с символа # (решётка)');
     }
-    if(!re.test(hashtag)) {
+    if(!regular.test(hashtag)) {
       return hashtagsInput.setCustomValidity('строка после решётки должна состоять из букв и чисел и не может содержать пробелы, спецсимволы (#, @, $ и т. п.), символы пунктуации (тире, дефис, запятая и т. п.), эмодзи и т. д.');
     }
   });
