@@ -4,8 +4,8 @@ const getData = (onSuccess, onFail) => {
     .then((photos) => {
       onSuccess(photos);
     })
-    .catch(() => {
-      onFail('Не удалось загрузить данные. Попробуйте ещё раз');
+    .catch((e) => {
+      onFail(e.message);
     });
 };
 

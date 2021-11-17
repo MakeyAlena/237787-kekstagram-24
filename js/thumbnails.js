@@ -1,9 +1,13 @@
 import {showModal} from './full-photo.js';
+import {debounce} from './utils/debounce.js';
 
 const thumbnailsList = document.querySelector('.pictures');
 const thumbnailsTemplate = document.querySelector('#picture').content;
 
 export const renderPhotos = (listNotes) => {
+  thumbnailsList.querySelectorAll('.picture').forEach((img) => {
+    thumbnailsList.removeChild(img);
+  });
   const listNotesFragment = document.createDocumentFragment();
 
   listNotes.forEach(({url, comments, likes, description, avatar}) => {
@@ -20,3 +24,4 @@ export const renderPhotos = (listNotes) => {
 
   thumbnailsList.appendChild(listNotesFragment);
 };
+export const debounceRenderPhotos = debounce(renderPhotos);
