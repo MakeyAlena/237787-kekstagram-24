@@ -3,11 +3,12 @@ const body = document.body;
 const commentTemplate = document.querySelector('#comment').content;
 const commentsBlock = photoDetails.querySelector('.social__comments');
 const showMoreComment = photoDetails.querySelector('.social__comments-loader');
-const countOfComment = photoDetails.querySelector('.social__comment-count');
+const countOfComment = photoDetails.querySelector('.comments-count');
+const showCommentCount = photoDetails.querySelector('.comments-showed-count');
 let currentCommentCount = 0;
-let currentComment = [];
+let currentComments = [];
 
-function appendComments(comments, start, step) {
+const appendComments = (comments, start, step) => {
   const listNotesFragment = document.createDocumentFragment();
   const end = step + start;
   comments.slice(start, end).forEach(({avatar, message}) => {
@@ -24,13 +25,16 @@ function appendComments(comments, start, step) {
     showMoreComment.classList.remove('hidden');
     countComment = end;
   }
-  countOfComment.innerHTML = `${countComment} из <span class="comments-count">${comments.length}</span> комментариев`;
+
   currentCommentCount = end;
-}
+
+  showCommentCount.textContent = countComment;
+  countOfComment.textContent = comments.length;
+};
 
 export function showModal({avatar, url, likes, comments, description}) {
   currentCommentCount = 0;
-  currentComment = comments;
+  currentComments = comments;
   body.classList.add('modal-open');
   photoDetails.classList.remove('hidden');
   photoDetails.querySelector('.big-picture__img img').src = url;
@@ -63,6 +67,6 @@ document.querySelector('#picture-cancel').addEventListener('click', () => {
 });
 
 showMoreComment.addEventListener('click', () => {
-  appendComments(currentComment, currentCommentCount, 5);
+  appendComments(currentComments, currentCommentCount, 5);
 });
 

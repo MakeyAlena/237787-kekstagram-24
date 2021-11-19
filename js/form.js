@@ -5,15 +5,16 @@ const uploadOverlay = document.querySelector('.img-upload__overlay');
 const body = document.body;
 const uploadFormFile = uploadForm.querySelector('#upload-file');
 const uploadFormCancel = uploadForm.querySelector('#upload-cancel');
-const SendFormSuccess = document.querySelector('.success');
+const sendFormSuccess = document.querySelector('.success');
 const closeSuccessFormButton = document.querySelector('.success__button');
-const SendFormFail = document.querySelector('.error');
+const sendFormFail = document.querySelector('.error');
 const closeErrorFormButton = document.querySelector('.error__button');
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 const preview = document.querySelector('.img-upload__preview img');
 
 function openForm() {
   resetEffect();
+  preview.style.transform = 'scale(1)';
   uploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
 }
@@ -29,10 +30,10 @@ body.addEventListener('keydown', (evt)  => {
     hideForm();
   }
   if(evt.key === 'Escape'){
-    SendFormSuccess.classList.add('hidden');
+    sendFormSuccess.classList.add('hidden');
   }
   if(evt.key === 'Escape'){
-    SendFormFail.classList.add('hidden');
+    sendFormFail.classList.add('hidden');
   }
 });
 
@@ -59,11 +60,11 @@ const setUserFormSubmit = (closeForm) => {
     sendData(
       () => {
         closeForm();
-        SendFormSuccess.classList.remove('hidden');
+        sendFormSuccess.classList.remove('hidden');
       } ,
       () => {
         closeForm();
-        SendFormFail.classList.remove('hidden');
+        sendFormFail.classList.remove('hidden');
       },
       new FormData(evt.target),
     );
@@ -71,22 +72,22 @@ const setUserFormSubmit = (closeForm) => {
 };
 
 closeSuccessFormButton.addEventListener('click', () => {
-  SendFormSuccess.classList.add('hidden');
+  sendFormSuccess.classList.add('hidden');
 });
 
-SendFormSuccess.addEventListener('click', (evt) => {
+sendFormSuccess.addEventListener('click', (evt) => {
   if(evt.target.classList.contains('success')) {
-    SendFormSuccess.classList.add('hidden');
+    sendFormSuccess.classList.add('hidden');
   }
 });
 
 closeErrorFormButton.addEventListener('click', () => {
-  SendFormFail.classList.add('hidden');
+  sendFormFail.classList.add('hidden');
 });
 
-SendFormFail.addEventListener('click', (evt) => {
+sendFormFail.addEventListener('click', (evt) => {
   if(evt.target.classList.contains('error')) {
-    SendFormFail.classList.add('hidden');
+    sendFormFail.classList.add('hidden');
   }
 });
 

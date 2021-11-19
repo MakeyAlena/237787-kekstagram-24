@@ -11,13 +11,6 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-function getCommentLength (comment, maxLength) {
-  if (comment.length > maxLength) {
-    return false;
-  }
-  return true;
-}
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = 100;
@@ -39,4 +32,4 @@ const showAlert = (message) => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
 };
-export {getRandomIntInclusive, getCommentLength, showAlert};
+export {getRandomIntInclusive, showAlert};

@@ -16,6 +16,7 @@ uploadComment.addEventListener('input', () => {
 
 const hashtagsInput = document.querySelector('.text__hashtags');
 const regular = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
+const hashtagLength = 20;
 
 
 hashtagsInput.addEventListener('input', () => {
@@ -29,7 +30,7 @@ hashtagsInput.addEventListener('input', () => {
     if(hashtag.startsWith('#') && hashtag.length === 1) {
       return hashtagsInput.setCustomValidity('хеш-тег не может состоять только из одной решётки');
     }
-    if(hashtag.length > 20) {
+    if(hashtag.length > hashtagLength) {
       return hashtagsInput.setCustomValidity('максимальная длина одного хэш-тега 20 символов, включая решётку');
     }
     if(!hashtag.startsWith('#') && hashtag.length > 0) {

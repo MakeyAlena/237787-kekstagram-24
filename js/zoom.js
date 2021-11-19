@@ -2,7 +2,7 @@ const zoomElement = document.querySelector('.img-upload__scale');
 const changeScale = zoomElement.querySelector('.scale__control--value');
 const btnZoomMinusPicture = zoomElement.querySelector('.scale__control--smaller');
 const btnZoomPlusPicture = zoomElement.querySelector('.scale__control--bigger');
-const imgPreview = document.querySelector('.img-upload__preview');
+const imgPreview = document.querySelector('.img-upload__preview img');
 
 const min = 25;
 const max = 100;
@@ -19,20 +19,19 @@ function desiredRange (value) {
   return (value >= min) && (value <= max);
 }
 
-btnZoomMinusPicture.addEventListener('click', () => {
+const changeZoom = (value) => {
   const currentValue = percentToValue(changeScale.value);
-  const newValue = currentValue - step;
+  const newValue = currentValue + value;
   if(desiredRange(newValue)) {
     changeScale.value = valueToPercent(newValue);
     imgPreview.style.transform = `scale(${newValue/100})`;
   }
+};
+
+btnZoomMinusPicture.addEventListener('click', () => {
+  changeZoom(-step);
 });
 
 btnZoomPlusPicture.addEventListener('click', () => {
-  const currentValue = percentToValue(changeScale.value);
-  const newValue = currentValue + step;
-  if(desiredRange(newValue)) {
-    changeScale.value = valueToPercent(newValue);
-    imgPreview.style.transform = `scale(${newValue/100})`;
-  }
+  changeZoom(step);
 });

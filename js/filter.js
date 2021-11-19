@@ -16,9 +16,6 @@ const comparePhotos = (photoA, photoB) => {
 export const showFilters = () => {
   uploadFilter.classList.remove('img-filters--inactive');
 };
-export const hideFilters = () => {
-  uploadFilter.classList.add('img-filters--inactive');
-};
 
 defaultFilter.addEventListener('click', () => {
   uploadFilter.classList.add('img-filters--inactive');
